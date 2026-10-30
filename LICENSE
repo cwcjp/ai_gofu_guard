@@ -1,0 +1,14 @@
+# License — Documentation
+
+Copyright © 2026 COLOR WEB - Takahiro Yamasaki
+
+Unless otherwise indicated, the documentation in this repository is licensed under the **Creative Commons Attribution 4.0 International License (CC BY 4.0)**.
+
+You are free to share and adapt the documentation, including for commercial purposes, provided that you comply with the license terms, including appropriate attribution, a link to the license, and an indication of changes made.
+
+Official license text: https://creativecommons.org/licenses/by/4.0/legalcode
+License summary: https://creativecommons.org/licenses/by/4.0/
+
+**Scope:** This license applies to the documentation only. It does not automatically apply to software code that may be added to this repository in the future. Software code will have its own license explicitly stated when published.
+
+**Disclaimer:** Publication of these documents does not constitute certification or a guarantee of AI-agent safety. Implementations and operational deployments require their own security review and validation.
