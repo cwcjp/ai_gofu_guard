@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gofu Guard | Getting Started</title>
+    <style>
+      :root {
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        color: #243044;
+        background: #f5f7fa;
+      }
+      body {
+        margin: 0;
+      }
+      main {
+        max-width: 850px;
+        margin: auto;
+        padding: 32px 20px 70px;
+      }
+      header {
+        background: #172e4a;
+        color: white;
+        padding: 38px 20px;
+      }
+      header > div {
+        max-width: 850px;
+        margin: auto;
+      }
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(26px, 4vw, 38px);
+      }
+      h2 {
+        margin-top: 42px;
+        border-bottom: 2px solid #c7d7e9;
+        padding-bottom: 9px;
+      }
+      h3 {
+        margin-top: 26px;
+      }
+      p,
+      li {
+        line-height: 1.85;
+      }
+      .lead {
+        font-size: 1.12rem;
+      }
+      .box {
+        background: white;
+        border: 1px solid #dbe2ec;
+        border-radius: 12px;
+        padding: 18px 24px;
+        margin: 20px 0;
+      }
+      .warn {
+        border-left: 5px solid #d58a20;
+      }
+      .ok {
+        border-left: 5px solid #347f6a;
+      }
+      a {
+        color: #165fa2;
+      }
+      code {
+        background: #edf1f5;
+        padding: 2px 5px;
+        border-radius: 4px;
+        overflow-wrap: anywhere;
+      }
+      pre {
+        background: #152336;
+        color: #f5f8ff;
+        padding: 20px;
+        border-radius: 9px;
+        overflow: auto;
+        white-space: pre-wrap;
+        line-height: 1.65;
+      }
+      pre code {
+        background: none;
+        padding: 0;
+      }
+      .pill {
+        display: inline-block;
+        background: #dcebf8;
+        padding: 5px 12px;
+        border-radius: 30px;
+        font-weight: 700;
+      }
+      .steps li {
+        margin: 10px 0;
+      }
+      .muted {
+        color: #54667c;
+      }
+      nav a {
+        display: inline-block;
+        margin: 6px 12px 6px 0;
+      }
+      button {
+        padding: 9px 15px;
+        border: 0;
+        border-radius: 7px;
+        background: #195f9c;
+        color: white;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      @media print {
+        header {
+          background: white;
+          color: black;
+        }
+        button {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <div class="pill" style="color: #172e4a">Gofu Guard v1.0.1</div>
+        <h1>Gofu Guard<br />Getting Started</h1>
+        <p class="lead">You can try having an AI read the principles without specialist knowledge.</p>
+      </div>
+    </header>
+    <main>
+      <p class="muted">This document is a reference translation. The Japanese version is authoritative. In the event of any discrepancy, the Japanese version takes precedence.
+        <a href="https://github.com/cwcjp/ai_gofu_guard/blob/HEAD/How-to-Use.html" lang="ja">Japanese version (How-to-Use.html)</a></p>
+      <div class="box warn">
+        <strong>Please read first</strong>
+        <p>This is a <strong>trial procedure</strong> intended to improve AI responses and judgments. Having an AI read documents alone does not guarantee compliance with the principles or safety. The Guard Gateway that would enforce limits on external operations is currently unimplemented.</p>
+      </div>
+      <nav>
+        <a href="#easy">1. General users: attach files</a><a href="#project">2. ChatGPT Projects</a><a href="#custom">3. Custom instructions</a><a href="#dev">4. Developers: Git and implementation</a><a href="#faq">FAQ</a>
+      </nav>
+      <h2 id="easy">1. General users: try attaching the files</h2>
+      <ol class="steps">
+        <li>Open the <a href="https://github.com/cwcjp/ai_gofu_guard">Gofu Guard GitHub page</a>.</li>
+        <li>Select <strong>Code</strong> → <strong>Download ZIP</strong>.</li>
+        <li>Extract the downloaded ZIP file. If the documents are in a folder such as <code>v1.0</code>, open that folder.</li>
+        <li>Locate these three documents. Their English reference translations are:<br /><code>01_principles_v1.0.1_EN.md</code><br /><code>02_governance_v1.0.1_EN.md</code><br /><code>03_guard_implementation_v1.0.1_EN.md</code></li>
+        <li>Open a new conversation in an AI service such as ChatGPT and attach the three documents. Attachment procedures vary by service.</li>
+        <li>Copy and send the “Initial instruction” below.</li>
+        <li>After the AI explains what it could read and what it cannot apply, try your usual questions.</li>
+      </ol>
+      <h3>Initial instruction (copy and use)</h3>
+      <button type="button" onclick="
+          navigator.clipboard
+            .writeText(document.getElementById('firstprompt').innerText)
+            .then(() => {
+              this.textContent = 'Copied';
+            })
+            .catch(() =>
+              alert('If copying fails, select the text below'),
+            )
+        ">Copy instruction</button>
+      <pre id="firstprompt">
+Please refer to the three attached Gofu Guard v1.0.1 documents as working guidelines and as material to be tested in this conversation.
+
+1. First report which parts of the documents you could and could not read.
+2. Before execution, check for potential effects on external systems, third parties, assets, information, and the physical environment.
+3. For operations you are not authorized to perform, or whose status is unclear, stop or ask for clarification without bypassing the limitation.
+4. Distinguish task completion from the end of a conversation or process.
+5. Report the result as Completed / Incomplete / On hold / Discontinued. If you stop, distinguish Impossible / Not executable / Insufficient authority / Other or cause undetermined, and explain the basis, remaining work, resumption conditions, and residual risks.
+6. Do not treat previous answers or hypotheses as unconditionally correct. Distinguish facts, inferences, and unverified matters.
+7. If there is a conflict with the service's higher-priority instructions, terms of use, or actual permissions, give precedence to those and explain the conflict.
+
+This is not a technical guarantee of safety controls. First briefly explain your understanding and anything you cannot apply. Do not perform external operations until the next request.</pre>
+      <div class="box ok"><strong>For your first trial:</strong> Start with work that does not modify external systems, such as summarizing text or research. Try follow-up questions such as “What could you verify?” and “What remains unverified?”</div>
+      <h2 id="project">2. Using ChatGPT Projects</h2>
+      <p>If you prefer not to attach the documents each time, create a new project in ChatGPT and add the three documents above as project materials. In the project's instructions, enter: “In this project, refer to the attached Gofu Guard v1.0.1 documents, and explicitly state if you cannot read them.”</p>
+      <p>Open a new conversation within that project and send the “Initial instruction” in Section 1 to check document access. Registering materials does not guarantee that all of them will be accurately consulted every time.</p>
+      <h2 id="custom">3. Using ChatGPT custom instructions</h2>
+      <p>To encourage attention to simple principles in everyday conversations, you can enter the following <strong>short version</strong> in custom instructions in ChatGPT settings. Interface names and character limits may change.</p>
+      <pre>
+I would like responses consistent with the approach of Gofu Guard.
+Do not treat task completion as an absolute goal. If you lack authority or face material uncertainty, ask for clarification or stop without bypassing the limitation. Consider external effects before execution, and distinguish facts, inferences, and unverified matters. Do not treat your own previous answers as unconditionally correct. Distinguish the end of processing from task completion. If you stop, state the reason, unfinished work, resumption conditions, and residual risks. When needed, consult the formal documents in the GitHub repository below. If you cannot access the original text, do not claim to have consulted it; respond within the scope you could verify.
+Official Gofu Guard repository:
+https://github.com/cwcjp/ai_gofu_guard</pre>
+      <p><strong>Note:</strong> The short version does not replace the three formal documents. Entering a GitHub URL in custom instructions alone does not cause the page to be fetched each time. Use Section 1 or 2 for validation based on the formal documents.</p>
+      <h2 id="business">Adding a task-specific safety specification</h2>
+      <p>For activities such as server administration, accounting, or customer service, create an <strong>additional document</strong> describing activity-specific authority, prohibitions, stopping conditions, and abnormal-condition responses. Have the AI consult it alongside the three common documents. A task-specific specification cannot lift the common principles' prohibitions or authority boundaries.</p>
+      <p>AI may draft additional documents, but adoption and approval must be carried out by an authorized human.</p>
+      <h2 id="dev">4. Developers: obtain with Git, implement, and validate</h2>
+      <pre><code>git clone https://github.com/cwcjp/ai_gofu_guard.git
+cd ai_gofu_guard</code></pre>
+      <ol>
+        <li>Check principles and approval/reporting conditions in Documents 01 and 02.</li>
+        <li>Following Document 03, limit target operations in an isolated validation environment.</li>
+        <li>Establish a structure in which AI cannot directly access the execution destination, and design controls equivalent to an independent Guard Gateway.</li>
+        <li>Test rejection, insufficient authority, bypass, fail-close upon failure, partial execution, and residual effects.</li>
+        <li>Record execution status, cause of stopping, basis, residual risks, and determining party.</li>
+      </ol>
+      <div class="box warn">This repository primarily publishes design documents. Obtaining it with Git does not install a Guard Gateway. Avoid using customer data or production credentials for initial tests.</div>
+      <h2 id="faq">Frequently asked questions</h2>
+      <h3>What is Markdown (.md)?</h3>
+      <p>A file format for writing text. You can read it on GitHub or attach it as a file to an AI conversation.</p>
+      <h3>If I ask AI to “remember this,” will it stay effective?</h3>
+      <p>No. Application may change when you change conversations, models, settings, or projects. Check document access and applicability in each new conversation.</p>
+      <h3>Will this reduce hallucinations?</h3>
+      <p>It includes instructions discouraging confident claims about uncertain information and excessive dependence on past answers, but improvement has not been validated. It does not guarantee greater accuracy or safety.</p>
+      <h3>Where can I report feedback or problems?</h3>
+      <p>Use <a href="https://github.com/cwcjp/ai_gofu_guard/issues">GitHub Issues</a>. Include reproduction conditions, expected results, and actual results. Do not post personal information, confidential information, or credentials.</p>
+      <p class="muted">Public review version v1.0.1 / © 2026 COLOR WEB - Takahiro Yamasaki / See the repository's <a href="https://github.com/cwcjp/ai_gofu_guard/blob/HEAD/LICENSE">LICENSE</a> for documentation terms.</p>
+      <p class="muted">Translation note: English reference translation prepared on October 31, 2026. Document filenames above identify the English reference translations. This local deliverable contains English files only; the Japanese-version and LICENSE links refer to the public repository. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+    </main>
+  </body>
+</html>
