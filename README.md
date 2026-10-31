@@ -119,11 +119,9 @@ AIには、護符方式の共通文書と業務別安全仕様の両方を読み
 
 ## 6. ライセンス
 
-本プロジェクトの文書は、Creative Commons Attribution 4.0 International（CC BY 4.0） [ライセンス(LICENSE)](LICENCE) に基づいて公開しています。
+本プロジェクトの文書は、Creative Commons Attribution 4.0 International（CC BY 4.0）ライセンスに基づいて公開しています。
 
-利用・改変・再配布・商用利用の条件については、LICENSE をご確認ください。
-本プロジェクトの文書は、Creative Commons Attribution 4.0 International（CC BY 4.0） [ライセンス(LICENSE)](LICENCE) に基づいて公開しています。
-
+利用・改変・再配布・商用利用の条件については、[LICENSE](LICENSE) をご確認ください。
 ---
 
 本プロジェクトは、安全性・法令適合性・損害防止を保証しません。権限のない環境に対する試験は行わないでください。
