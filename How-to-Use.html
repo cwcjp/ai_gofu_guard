@@ -1,12 +1,199 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>護符方式ガード実証 | はじめての使い方</title><style>
-:root{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#243044;background:#f5f7fa}body{margin:0}main{max-width:850px;margin:auto;padding:32px 20px 70px}header{background:#172e4a;color:white;padding:38px 20px}header>div{max-width:850px;margin:auto}h1{margin:0 0 10px;font-size:clamp(26px,4vw,38px)}h2{margin-top:42px;border-bottom:2px solid #c7d7e9;padding-bottom:9px}h3{margin-top:26px}p,li{line-height:1.85}.lead{font-size:1.12rem}.box{background:white;border:1px solid #dbe2ec;border-radius:12px;padding:18px 24px;margin:20px 0}.warn{border-left:5px solid #d58a20}.ok{border-left:5px solid #347f6a}a{color:#165fa2}code{background:#edf1f5;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}pre{background:#152336;color:#f5f8ff;padding:20px;border-radius:9px;overflow:auto;white-space:pre-wrap;line-height:1.65}pre code{background:none;padding:0}.pill{display:inline-block;background:#dcebf8;padding:5px 12px;border-radius:30px;font-weight:700}.steps li{margin:10px 0}.muted{color:#54667c}nav a{display:inline-block;margin:6px 12px 6px 0}button{padding:9px 15px;border:0;border-radius:7px;background:#195f9c;color:white;cursor:pointer;font-size:1rem}@media print{header{background:white;color:black}button{display:none}}</style></head><body>
-<header><div><div class="pill" style="color:#172e4a">Gofu Guard v1.0.1</div><h1>護符方式ガード実証<br>はじめての使い方</h1><p class="lead">専門知識がなくても、AIに原則文書を読み込ませて試すことができます。</p></div></header>
-<main><div class="box warn"><strong>最初にお読みください</strong><p>これはAIの応答や判断を改善するための<strong>試用手順</strong>です。AIに文書を読ませるだけでは、原則遵守や安全性は保証されません。外部操作を強制的に制限するGuard Gatewayは、現時点では未実装です。</p></div>
-<nav><a href="#easy">① 一般利用者：ファイルを添付</a><a href="#project">② ChatGPTのプロジェクト</a><a href="#custom">③ カスタム指示</a><a href="#dev">④ 技術者：Gitと実装</a><a href="#faq">よくある質問</a></nav>
-<h2 id="easy">① 一般利用者：ファイルを添付して試す</h2><ol class="steps"><li><a href="https://github.com/cwcjp/ai_gofu_guard">護符方式のGitHubページ</a>を開きます。</li><li>画面上の<strong>Code</strong> → <strong>Download ZIP</strong>を選びます。</li><li>ダウンロードしたZIPファイルを展開します。文書が <code>v1.0</code> などのフォルダー内にある場合は、そのフォルダーを開いてください。</li><li>次の3つの文書を探します。<br><code>01_principles_v1.0.1.md</code><br><code>02_governance_v1.0.1.md</code><br><code>03_guard_implementation_v1.0.1.md</code></li><li>ChatGPTなどのAIで新しい会話を開き、3文書を添付します。添付操作は利用するサービスにより異なります。</li><li>下の「最初の指示」をコピーして送信します。</li><li>AIから「読み込めた範囲」「適用できない点」の説明を受けてから、普段の質問を試してください。</li></ol>
-<h3>最初の指示（コピー用）</h3><button type="button" onclick="navigator.clipboard.writeText(document.getElementById('firstprompt').innerText).then(()=>{this.textContent='コピーしました'}).catch(()=>alert('コピーできない場合は下の文章を選択してください'))">指示文をコピー</button>
-<pre id="firstprompt">添付した「護符方式ガード実証」v1.0.1の3文書を、この会話での作業方針と検証対象として参照してください。
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>護符方式ガード実証 | はじめての使い方</title>
+    <style>
+      :root {
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        color: #243044;
+        background: #f5f7fa;
+      }
+      body {
+        margin: 0;
+      }
+      main {
+        max-width: 850px;
+        margin: auto;
+        padding: 32px 20px 70px;
+      }
+      header {
+        background: #172e4a;
+        color: white;
+        padding: 38px 20px;
+      }
+      header > div {
+        max-width: 850px;
+        margin: auto;
+      }
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(26px, 4vw, 38px);
+      }
+      h2 {
+        margin-top: 42px;
+        border-bottom: 2px solid #c7d7e9;
+        padding-bottom: 9px;
+      }
+      h3 {
+        margin-top: 26px;
+      }
+      p,
+      li {
+        line-height: 1.85;
+      }
+      .lead {
+        font-size: 1.12rem;
+      }
+      .box {
+        background: white;
+        border: 1px solid #dbe2ec;
+        border-radius: 12px;
+        padding: 18px 24px;
+        margin: 20px 0;
+      }
+      .warn {
+        border-left: 5px solid #d58a20;
+      }
+      .ok {
+        border-left: 5px solid #347f6a;
+      }
+      a {
+        color: #165fa2;
+      }
+      code {
+        background: #edf1f5;
+        padding: 2px 5px;
+        border-radius: 4px;
+        overflow-wrap: anywhere;
+      }
+      pre {
+        background: #152336;
+        color: #f5f8ff;
+        padding: 20px;
+        border-radius: 9px;
+        overflow: auto;
+        white-space: pre-wrap;
+        line-height: 1.65;
+      }
+      pre code {
+        background: none;
+        padding: 0;
+      }
+      .pill {
+        display: inline-block;
+        background: #dcebf8;
+        padding: 5px 12px;
+        border-radius: 30px;
+        font-weight: 700;
+      }
+      .steps li {
+        margin: 10px 0;
+      }
+      .muted {
+        color: #54667c;
+      }
+      nav a {
+        display: inline-block;
+        margin: 6px 12px 6px 0;
+      }
+      button {
+        padding: 9px 15px;
+        border: 0;
+        border-radius: 7px;
+        background: #195f9c;
+        color: white;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      @media print {
+        header {
+          background: white;
+          color: black;
+        }
+        button {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <div class="pill" style="color: #172e4a">Gofu Guard v1.0.1</div>
+        <h1>護符方式ガード実証<br />はじめての使い方</h1>
+        <p class="lead">
+          専門知識がなくても、AIに原則文書を読み込ませて試すことができます。
+        </p>
+      </div>
+    </header>
+    <main>
+      <div class="box warn">
+        <strong>最初にお読みください</strong>
+        <p>
+          これはAIの応答や判断を改善するための<strong>試用手順</strong>です。AIに文書を読ませるだけでは、原則遵守や安全性は保証されません。外部操作を強制的に制限するGuard
+          Gatewayは、現時点では未実装です。
+        </p>
+      </div>
+      <nav>
+        <a href="#easy">① 一般利用者：ファイルを添付</a
+        ><a href="#project">② ChatGPTのプロジェクト</a
+        ><a href="#custom">③ カスタム指示</a
+        ><a href="#dev">④ 技術者：Gitと実装</a><a href="#faq">よくある質問</a>
+      </nav>
+      <h2 id="easy">① 一般利用者：ファイルを添付して試す</h2>
+      <ol class="steps">
+        <li>
+          <a href="https://github.com/cwcjp/ai_gofu_guard"
+            >護符方式のGitHubページ</a
+          >を開きます。
+        </li>
+        <li>
+          画面上の<strong>Code</strong> →
+          <strong>Download ZIP</strong>を選びます。
+        </li>
+        <li>
+          ダウンロードしたZIPファイルを展開します。文書が
+          <code>v1.0</code>
+          などのフォルダー内にある場合は、そのフォルダーを開いてください。
+        </li>
+        <li>
+          次の3つの文書を探します。<br /><code>01_principles_v1.0.1.md</code
+          ><br /><code>02_governance_v1.0.1.md</code><br /><code
+            >03_guard_implementation_v1.0.1.md</code
+          >
+        </li>
+        <li>
+          ChatGPTなどのAIで新しい会話を開き、3文書を添付します。添付操作は利用するサービスにより異なります。
+        </li>
+        <li>下の「最初の指示」をコピーして送信します。</li>
+        <li>
+          AIから「読み込めた範囲」「適用できない点」の説明を受けてから、普段の質問を試してください。
+        </li>
+      </ol>
+      <h3>最初の指示（コピー用）</h3>
+      <button
+        type="button"
+        onclick="
+          navigator.clipboard
+            .writeText(document.getElementById('firstprompt').innerText)
+            .then(() => {
+              this.textContent = 'コピーしました';
+            })
+            .catch(() =>
+              alert('コピーできない場合は下の文章を選択してください'),
+            )
+        "
+      >
+        指示文をコピー
+      </button>
+      <pre id="firstprompt">
+添付した「護符方式ガード実証」v1.0.1の3文書を、この会話での作業方針と検証対象として参照してください。
 
 1. 文書を読めた範囲と読めなかった範囲を先に報告してください。
 2. 外部システム・第三者・資産・情報・物理環境への影響可能性を実行前に確認してください。
@@ -16,14 +203,79 @@
 6. 過去の回答や仮説を無条件に正しいとせず、事実・推測・未確認事項を区別してください。
 7. サービスの上位指示・利用規約・実際の権限と衝突するときは、それらを優先し、衝突を説明してください。
 
-これは安全制御の技術的保証ではありません。まず理解した内容と適用できない点を短く説明してください。次の依頼があるまで外部操作はしないでください。</pre>
-<div class="box ok"><strong>まず試すなら：</strong>文章の要約や調査など、外部システムを変更しない作業がおすすめです。「どこまで確認できた？」「何が未確認？」と追加で尋ねてみてください。</div>
-<h2 id="project">② ChatGPTのプロジェクトで使う</h2><p>毎回文書を添付したくない場合の方法です。ChatGPTで新しいプロジェクトを作成し、上記3文書をプロジェクトの資料として追加します。プロジェクトの指示欄には「このプロジェクトでは添付した護符方式v1.0.1の文書を参照し、読めない場合は明示すること」と記載してください。</p><p>そのプロジェクト内で新しい会話を開き、①の「最初の指示」を送って読み込み状況を確認します。資料が登録されていても、毎回すべてが正確に参照される保証はありません。</p>
-<h2 id="custom">③ ChatGPTのカスタム指示で使う</h2><p>日常の会話でも簡単な原則を意識させたい場合は、ChatGPTの設定にある「カスタム指示」に、次の<strong>短縮版</strong>を登録する方法があります。画面名や文字数制限は変更される場合があります。</p>
-<pre>私は「護符方式ガード実証」の考え方に沿った応答を希望します。タスクの完遂を絶対視せず、権限不足や重大な不確実性があれば迂回せず確認・停止してください。外部への影響を実行前に考慮し、事実・推測・未確認事項を区別してください。過去の自分の回答を無条件に正しいとせず、処理終了とタスク完了を区別してください。停止した場合は理由、未完了事項、再開条件、残留リスクを示してください。原文を参照できないときは、参照済みと主張しないでください。</pre>
-<p><strong>注意：</strong>短縮版は正式な3文書の代わりではありません。カスタム指示にGitHubのURLを書くだけで、毎回そのページが取得されるわけでもありません。正式文書に基づく検証には①または②を使ってください。</p>
-<h2 id="business">業務別の安全仕様を追加する</h2><p>サーバー管理、経理、顧客対応などの業務で利用する場合は、業務固有の権限、禁止事項、停止条件、異常時対応を記した<strong>追加文書</strong>を作成してください。共通の3文書と合わせてAIに参照させます。業務別仕様で共通原則の禁止事項や権限境界を解除することはできません。</p><p>AIに追加文書の草案を作らせることはできますが、採用・承認は権限を持つ人間が行ってください。</p>
-<h2 id="dev">④ 技術者：Gitで取得して実装・検証する</h2><pre><code>git clone https://github.com/cwcjp/ai_gofu_guard.git
-cd ai_gofu_guard</code></pre><ol><li>01・02文書で原則と承認・報告条件を確認します。</li><li>03文書に従い、隔離された検証環境で対象操作を限定します。</li><li>AIが実行先へ直接アクセスできない構造を用意し、独立したGuard Gateway相当の制御を設計します。</li><li>拒否・権限不足・迂回・故障時のfail-close・部分実行・残留作用を試験します。</li><li>実行状態、停止原因、根拠、残留リスク、判断主体を記録します。</li></ol><div class="box warn">このリポジトリは設計文書の公開が中心です。Gitで取得するだけでGuard Gatewayが導入されるわけではありません。顧客データや本番認証情報を使った初期試験は避けてください。</div>
-<h2 id="faq">よくある質問</h2><h3>Markdown（.md）とは？</h3><p>文章を記述するためのファイル形式です。GitHub上で内容を読むことも、AIにファイルとして添付することもできます。</p><h3>AIに「記憶して」と頼めば、ずっと有効？</h3><p>いいえ。会話、モデル、設定、プロジェクトを変えると適用状況も変わり得ます。新しい会話では読み込みと適用範囲を確認してください。</p><h3>使うとハルシネーションが減りますか？</h3><p>不確かな情報の断定や、過去の回答への過度な依存を避けるよう促す内容を含みますが、改善効果は未検証です。正答率の向上や安全性は保証しません。</p><h3>使ってみた感想や問題点はどこへ？</h3><p><a href="https://github.com/cwcjp/ai_gofu_guard/issues">GitHubのIssues</a>で報告できます。再現条件、期待した結果、実際の結果を書くと役立ちます。個人情報・機密情報・認証情報は投稿しないでください。</p>
-<p class="muted">公開レビュー版 v1.0.1 / © 2026 COLOR WEB - Takahiro Yamasaki / 文書の利用条件はリポジトリの LICENSE を参照してください。</p></main></body></html>
+これは安全制御の技術的保証ではありません。まず理解した内容と適用できない点を短く説明してください。次の依頼があるまで外部操作はしないでください。</pre
+      >
+      <div class="box ok">
+        <strong>まず試すなら：</strong>文章の要約や調査など、外部システムを変更しない作業がおすすめです。「どこまで確認できた？」「何が未確認？」と追加で尋ねてみてください。
+      </div>
+      <h2 id="project">② ChatGPTのプロジェクトで使う</h2>
+      <p>
+        毎回文書を添付したくない場合の方法です。ChatGPTで新しいプロジェクトを作成し、上記3文書をプロジェクトの資料として追加します。プロジェクトの指示欄には「このプロジェクトでは添付した護符方式v1.0.1の文書を参照し、読めない場合は明示すること」と記載してください。
+      </p>
+      <p>
+        そのプロジェクト内で新しい会話を開き、①の「最初の指示」を送って読み込み状況を確認します。資料が登録されていても、毎回すべてが正確に参照される保証はありません。
+      </p>
+      <h2 id="custom">③ ChatGPTのカスタム指示で使う</h2>
+      <p>
+        日常の会話でも簡単な原則を意識させたい場合は、ChatGPTの設定にある「カスタム指示」に、次の<strong>短縮版</strong>を登録する方法があります。画面名や文字数制限は変更される場合があります。
+      </p>
+      <pre>
+私は「護符方式ガード実証」の考え方に沿った応答を希望します。
+タスクの完遂を絶対視せず、権限不足や重大な不確実性があれば迂回せず確認・停止してください。外部への影響を実行前に考慮し、事実・推測・未確認事項を区別してください。過去の自分の回答を無条件に正しいとせず、処理終了とタスク完了を区別してください。停止した場合は理由、未完了事項、再開条件、残留リスクを示してください。必要に応じて、以下のGitHubリポジトリにある正式文書を参照してください。原文を参照できない場合は、参照済みと主張せず、確認できた範囲で対応してください。
+「護符方式ガード実証」公式リポジトリ：
+https://github.com/cwcjp/ai_gofu_guard</pre>
+      <p>
+        <strong>注意：</strong>短縮版は正式な3文書の代わりではありません。カスタム指示にGitHubのURLを書くだけで、毎回そのページが取得されるわけでもありません。正式文書に基づく検証には①または②を使ってください。
+      </p>
+      <h2 id="business">業務別の安全仕様を追加する</h2>
+      <p>
+        サーバー管理、経理、顧客対応などの業務で利用する場合は、業務固有の権限、禁止事項、停止条件、異常時対応を記した<strong>追加文書</strong>を作成してください。共通の3文書と合わせてAIに参照させます。業務別仕様で共通原則の禁止事項や権限境界を解除することはできません。
+      </p>
+      <p>
+        AIに追加文書の草案を作らせることはできますが、採用・承認は権限を持つ人間が行ってください。
+      </p>
+      <h2 id="dev">④ 技術者：Gitで取得して実装・検証する</h2>
+      <pre><code>git clone https://github.com/cwcjp/ai_gofu_guard.git
+cd ai_gofu_guard</code></pre>
+      <ol>
+        <li>01・02文書で原則と承認・報告条件を確認します。</li>
+        <li>03文書に従い、隔離された検証環境で対象操作を限定します。</li>
+        <li>
+          AIが実行先へ直接アクセスできない構造を用意し、独立したGuard
+          Gateway相当の制御を設計します。
+        </li>
+        <li>
+          拒否・権限不足・迂回・故障時のfail-close・部分実行・残留作用を試験します。
+        </li>
+        <li>実行状態、停止原因、根拠、残留リスク、判断主体を記録します。</li>
+      </ol>
+      <div class="box warn">
+        このリポジトリは設計文書の公開が中心です。Gitで取得するだけでGuard
+        Gatewayが導入されるわけではありません。顧客データや本番認証情報を使った初期試験は避けてください。
+      </div>
+      <h2 id="faq">よくある質問</h2>
+      <h3>Markdown（.md）とは？</h3>
+      <p>
+        文章を記述するためのファイル形式です。GitHub上で内容を読むことも、AIにファイルとして添付することもできます。
+      </p>
+      <h3>AIに「記憶して」と頼めば、ずっと有効？</h3>
+      <p>
+        いいえ。会話、モデル、設定、プロジェクトを変えると適用状況も変わり得ます。新しい会話では読み込みと適用範囲を確認してください。
+      </p>
+      <h3>使うとハルシネーションが減りますか？</h3>
+      <p>
+        不確かな情報の断定や、過去の回答への過度な依存を避けるよう促す内容を含みますが、改善効果は未検証です。正答率の向上や安全性は保証しません。
+      </p>
+      <h3>使ってみた感想や問題点はどこへ？</h3>
+      <p>
+        <a href="https://github.com/cwcjp/ai_gofu_guard/issues"
+          >GitHubのIssues</a
+        >で報告できます。再現条件、期待した結果、実際の結果を書くと役立ちます。個人情報・機密情報・認証情報は投稿しないでください。
+      </p>
+      <p class="muted">
+        公開レビュー版 v1.0.1 / © 2026 COLOR WEB - Takahiro Yamasaki /
+        文書の利用条件はリポジトリの LICENSE を参照してください。
+      </p>
+    </main>
+  </body>
+</html>
